@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ## 📁 Dataset Preparation
 
-We evaluate our method on three public datasets: **NUDT-SIRST**, **IRSTD-1K**, and **SIRST-Aug**.
+We evaluate our method on three public datasets: **IRSTD-1K**, **NUAA-SIRST**, and **SIRST-Aug**.
 
 | Dataset | Link |
 |---------|------|
