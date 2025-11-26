@@ -117,5 +117,5 @@ DCCS/
 
 We sincerely thank the following works for their contributions:
 
-- [BasicIRSTD](https://github.com/XinyiYing/BasicIRSTD) - A comprehensive toolbox for infrared small target detection
+- [BasicIRSTD](https://github.com/XinyiYing/BasicIRSTD) - A comprehensive toolbox 
 - [MSHNet](https://github.com/ying-fu/MSHNet) - Scale and Location Sensitive Loss
