@@ -403,26 +403,9 @@ class SS2D(nn.Module):
         invwh_y = torch.transpose(inv_y[:, 1].view(B, -1, W, H), dim0=2, dim1=3).contiguous().view(B, -1, L)
 
         return out_y[:, 0], inv_y[:, 0], wh_y, invwh_y
-    def forward(self, a: torch.Tensor, **kwargs):
-        B, H, W, C = a.shape
-
-        xz = self.in_proj(a)
-        x, z = xz.chunk(2, dim=-1)
-        z = z.permute(0, 3, 1, 2)
-        z = self.ChannelAttentionModule(z) * z
-        z = z.permute(0, 2, 3, 1).contiguous()
-        x = x.permute(0, 3, 1, 2).contiguous()
-        x = self.act(self.conv2d(x))
-        y1, y2, y3, y4 = self.forward_core(x)
-        assert y1.dtype == torch.float32
-        y = y1 + y2 + y3 + y4
-        y = torch.transpose(y, dim0=1, dim1=2).contiguous().view(B, H, W, -1)
-        y = self.out_norm(y)
-        y = y * torch.nn.functional.silu(z)
-        out = self.out_proj(y)
-        if self.dropout is not None:
-            out = self.dropout(out)
-        return out+a
+###
+later
+###
 def channel_shuffle(x: Tensor, groups: int) -> Tensor:
     batch_size, height, width, num_channels = x.size()
     channels_per_group = num_channels // groups
@@ -476,20 +459,9 @@ class SS_Conv_SSM(nn.Module):
             nn.ReLU()
         )
         self.ChannelAttentionModule = ChannelAttentionModule(in_channels=hidden_dim // 2)
-    def forward(self, input: torch.Tensor):
-        input_left, input_right = input.chunk(2, dim=-1)
-        input_right = self.ln_1(input_right)
-        input_left = self.ln_1(input_left)
-        x = self.drop_path(self.self_attention(input_right))
-        b0 = input_left.permute(0, 3, 1, 2).contiguous()
-        b1 = self.conv33conv33conv11(b0)
-        b2 = self.ChannelAttentionModule(b0)
-        b1= b1.permute(0, 2, 3, 1).contiguous()
-        b2 = b2.permute(0, 2, 3, 1).contiguous()
-        input_left = b1 * b2
-        output1 = torch.cat((input_left, x), dim=-1)
-        output = channel_shuffle(output1, groups=2)
-        return output + input
+###
+later
+###
 class VSSLayer(nn.Module):
     """ A basic Swin Transformer layer for one stage.
     Args:
@@ -699,3 +671,4 @@ class VSSM(nn.Module):
             x = x.permute(0, 3, 1, 2).contiguous()
             return x
         return outputs
+
