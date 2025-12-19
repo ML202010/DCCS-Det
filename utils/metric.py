@@ -9,7 +9,7 @@ class ROCMetric():
     """Computes pixAcc and mIoU metric scores
     """
 
-    def __init__(self, nclass, bins):  # bin的意义实际上是确定ROC曲线上的threshold取多少个离散值
+    def __init__(self, nclass, bins):  
         super(ROCMetric, self).__init__()
         self.nclass = nclass
         self.bins = bins
