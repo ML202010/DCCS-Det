@@ -137,8 +137,10 @@ class DCCS(nn.Module):
         x_e3z = self.encoder_3(self.pool(x_e2z))
         x_e3_fused = torch.cat([x_e3z, x_e3f], dim=1)
         x_e3z = self.post_fuse3(x_e3_fused)
+        
         x_m = self.middle_layer(self.pool(x_e3z))
         x_m = self.GLFA(x_m)
+        #decoder
         x_d3 = self.decoder_3(torch.cat([x_e3z, self.up(x_m)], 1))
         x_d2 = self.decoder_2(torch.cat([x_e2z, self.up(x_d3)], 1))
         x_d1 = self.decoder_1(torch.cat([x_e1z, self.up(x_d2)], 1))
