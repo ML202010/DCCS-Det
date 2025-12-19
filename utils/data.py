@@ -2,15 +2,12 @@ import torch
 import torch.nn as nn
 import torch.utils.data as Data
 import torchvision.transforms as transforms
-
 import os
 from PIL import Image, ImageOps, ImageFilter
 import os.path as osp
 import sys
 import random
 import shutil
-
-
 class IRSTD_Dataset(Data.Dataset):
     def __init__(self, args, mode='train'):
 
@@ -94,7 +91,6 @@ class IRSTD_Dataset(Data.Dataset):
             img = img.filter(ImageFilter.GaussianBlur(
                 radius=random.random()))
         return img, mask
-
     def _testval_sync_transform(self, img, mask):
         base_size = self.base_size
         img = img.resize((base_size, base_size), Image.BILINEAR)
