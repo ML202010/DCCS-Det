@@ -89,7 +89,7 @@ python main.py --dataset-dir '/path/to/dataset' \
 python main.py --dataset-dir './dataset/IRSTD-1K' --batch-size 4 --mode 'test' --weight-path './weight/irstd1k_weight.pkl'
 ```
 
-## 📈 Results
+## Results
 
 ### Quantitative Results
 
