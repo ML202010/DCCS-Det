@@ -1,4 +1,4 @@
-## 🛠️ Requirements
+## Requirements
 
 ### Environment
 - **Python** 3.8+
@@ -29,7 +29,7 @@ pip install mamba_ssm==1.0.1
 pip install -r requirements.txt
 ```
 
-## 📁 Dataset Preparation
+## Dataset Preparation
 
 We evaluate our method on three public datasets: **IRSTD-1K**, **NUAA-SIRST**, and **SIRST-Aug**.
 
@@ -60,7 +60,7 @@ Please organize the datasets as follows:
 │         └── ...
 ```
 
-## 🚀 Training
+## Training
 
 ```bash
 python main.py --dataset-dir '/path/to/dataset' \
@@ -75,7 +75,7 @@ python main.py --dataset-dir '/path/to/dataset' \
 python main.py --dataset-dir './dataset/IRSTD-1K' --batch-size 4 --epochs 400 --lr 0.05 --mode 'train'
 ```
 
-## 📊 Testing
+## Testing
 
 ```bash
 python main.py --dataset-dir '/path/to/dataset' \
@@ -100,7 +100,7 @@ python main.py --dataset-dir './dataset/IRSTD-1K' --batch-size 4 --mode 'test' -
 | SIRST-Aug | 75.57 | 98.90 | 33.46 | [Download](https://drive.google.com/file/d/1lcmTgft0LStM7ABWDIMRHTkcOv95p9LO/view?usp=sharing) |
 
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 DCCS/
@@ -113,7 +113,7 @@ DCCS/
 └── README.md
 ```
 
-## 🙏 Acknowledgement
+## Acknowledgement
 
 We sincerely thank the following works for their contributions:
 
