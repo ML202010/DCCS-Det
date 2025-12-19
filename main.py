@@ -10,7 +10,9 @@ from tqdm import tqdm
 import os.path as osp
 import os
 import time
+
 os.environ['CUDA_VISIBLE_DEVICES'] = "0"
+
 def parse_args():
     parser = ArgumentParser(description='Implement of model')
 
