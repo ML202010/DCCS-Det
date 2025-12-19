@@ -3,8 +3,6 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from skimage import measure
-
-
 def SoftIoULoss(pred, target):
     pred = torch.sigmoid(pred)
 
@@ -21,8 +19,6 @@ def SoftIoULoss(pred, target):
     loss = 1 - loss.mean()
 
     return loss
-
-
 def Dice(pred, target, warm_epoch=1, epoch=1, layer=0):
     pred = torch.sigmoid(pred)
 
@@ -39,8 +35,6 @@ def Dice(pred, target, warm_epoch=1, epoch=1, layer=0):
     loss = 1 - loss.mean()
 
     return loss
-
-
 class SLSIoULoss(nn.Module):
     def __init__(self):
         super(SLSIoULoss, self).__init__()
@@ -72,8 +66,6 @@ class SLSIoULoss(nn.Module):
         else:
             loss = 1 - loss.mean()
         return loss
-
-
 def LLoss(pred, target):
     loss = torch.tensor(0.0, requires_grad=True).to(pred)
 
@@ -102,8 +94,6 @@ def LLoss(pred, target):
         loss = loss + (1 - length_loss + angle_loss) / patch_size
 
     return loss
-
-
 class AverageMeter(object):
     """Computes and stores the average and current value"""
 
